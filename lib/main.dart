@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({ super.key });
+
+  final List<Color> myColor = [Colors.red, Colors.green, Colors.blue, Colors.amber];
+
+  final List<Widget> myList = List.generate(100, (index) => Text(
+    '${index + 1}',
+    style: const TextStyle(
+      fontSize: 12
+    ),
+  ));
 
   @override
   Widget build(BuildContext context) {
@@ -13,37 +22,16 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
+            'List View',
+            style: TextStyle(
+              color: Colors.white, 
+              fontWeight: FontWeight.bold,
+              fontSize: 20
+            ),
+            ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
-        ),
+        body: ListView(children: myList)
       ),
     );
   }
