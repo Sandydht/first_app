@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,36 +13,88 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
+            'List Tile',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20
+            ),
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
+        body: ListView(
+          children: const [
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
             ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
             ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
             ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Sandy Dwi Handoko Trapsilo'),
+              subtitle: Text('This is subtitle'),
+              leading: CircleAvatar(),
+              trailing: Text('10:00 PM'),
+            ),
+            Divider(),
+          ],
         ),
       ),
     );
