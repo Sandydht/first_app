@@ -13,37 +13,24 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
+            'Image Widget',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+            ),
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
+        body: Center(
+          child: Container(
+            width: 350,
+            color: Colors.amber,
+            child: const Image(
+              image: AssetImage('assets/img/laptop.jpg')
             ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
-        ),
+          ),
+        )
       ),
     );
   }
