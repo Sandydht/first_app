@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int counter = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -13,34 +20,47 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
+            'Dynamic Apps',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20
+            ),
           ),
           backgroundColor: Colors.blueAccent,
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
+            Text(
+              counter.toString(),
+              style: TextStyle(
+                fontSize: 50 + double.parse(counter.toString()),
+                fontWeight: FontWeight.bold
+              ),
             ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    if (counter != 1) {
+                      setState(() {
+                        counter--;
+                      });
+                    }
+                  }, 
+                  child: Icon(Icons.remove),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      counter++;
+                    });
+                  }, 
+                  child: Icon(Icons.add),
+                )
+              ],
             )
           ]
         ),
