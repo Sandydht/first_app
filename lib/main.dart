@@ -1,48 +1,44 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final List<Container> myList = List.generate(90, (index) {
+    return Container(
+      color: Color.fromARGB(255, Random().nextInt(256), Random().nextInt(256), Random().nextInt(256)),
+    );
+  });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Grid View',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          title: Text(
+            'Grid View',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
+        body: GridView(
+            padding: EdgeInsets.all(20),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20
             ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+            children: myList
         ),
       ),
     );
