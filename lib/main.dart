@@ -1,49 +1,69 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String? username;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Penggunaan Text Field',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          title: Text(
+            'Penggunaan Text Field',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+            ),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
-        ),
+        body: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter your username...',
+                ),
+                autocorrect: false,
+                controller: TextEditingController(
+                  text: username
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    username = value;
+                  });
+                  print('onChanged: $username');
+                },
+                onSubmitted: (value) {
+                  setState(() {
+                    username = value;
+                  });
+                  print('onSubmitted: $username');
+                },
+              ),
+              Text(
+                username.toString()
+              )
+            ],
+          )
+        )
       ),
     );
   }
