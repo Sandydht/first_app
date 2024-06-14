@@ -12,39 +12,42 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          title: const Text(
+            'Extract Widget',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+        body: ListView(
+          children: const [
+            ChatItem(),
+            ChatItem(),
+            ChatItem(),
+            ChatItem(),
+            ChatItem(),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class ChatItem extends StatelessWidget {
+  const ChatItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const ListTile(
+      leading: CircleAvatar(),
+      title: Text('Name'),
+      subtitle: Text('Subtitle'),
+      trailing: Text('10:00 PM'),
     );
   }
 }
