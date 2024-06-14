@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,39 +11,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Date Format',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          title: Text(
+            'Date Format',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+            ),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
+        body: Center(
+          child: Text(
+            DateFormat.yMMMMEEEEd().add_jm().format(DateTime.now()),
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600
             ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+          ),
         ),
       ),
     );
