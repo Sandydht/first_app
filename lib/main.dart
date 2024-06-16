@@ -1,48 +1,54 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Drawer',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          centerTitle: false,
+          iconTheme: IconThemeData(
+            color: Colors.white
+          ),
+          title: Text(
+            'Drawer',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.start,
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+        drawer: Drawer(
+          child: Column(
+            children: [
+              Container(
+                height: 115,
+                color: Colors.blueAccent,
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+              ),
+            ],
+          ),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(20),
+          child: Text('Some text here'),
         ),
       ),
     );
