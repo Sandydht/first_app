@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:first_app/providers/products.dart';
+import 'package:first_app/providers/all_products.dart';
 import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/product_detail_page.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => Products(),
+      create: (context) => AllProducts(),
       child: MaterialApp(
         home: HomePage(),
         routes: {

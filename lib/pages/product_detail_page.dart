@@ -1,4 +1,4 @@
-import 'package:first_app/providers/products.dart';
+import 'package:first_app/providers/all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +10,7 @@ class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
-    final product = Provider.of<Products>(context).findById(productId);
+    final product = Provider.of<AllProducts>(context).findById(productId);
 
     return Scaffold(
       appBar: AppBar(

@@ -1,8 +1,8 @@
 import 'dart:math';
+import 'package:first_app/providers/product.dart';
 import 'package:flutter/material.dart';
-import 'package:first_app/models/product.dart';
 
-class Products with ChangeNotifier {
+class AllProducts with ChangeNotifier {
   List<Product> _allProducts = List.generate(20, (index) => Product(
     id: 'id_${index + 1}',
     imageURL: 'https://picsum.photos/id/$index/200',

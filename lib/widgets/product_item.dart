@@ -1,54 +1,44 @@
 import 'package:first_app/pages/product_detail_page.dart';
+import 'package:first_app/providers/product.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ProductItem extends StatefulWidget {
-  final String? id;
-  final String? title;
-  final String? imageURL;
-  final bool? isFavorite;
+class ProductItem extends StatelessWidget {
+  const ProductItem({super.key});
 
-  ProductItem({
-    super.key, 
-    this.id,
-    this.title,
-    this.imageURL,
-    this.isFavorite
-  });
-
-  @override
-  State<ProductItem> createState() => _ProductItemState();
-}
-
-class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
+
     return ClipRect(
       child: GridTile(
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
               ProductDetailPage.routeName,
-              arguments: widget.id
+              arguments: product.id
             );
           },
           child: Image.network(
-            widget.imageURL.toString(),
+            '${product.imageURL}',
             fit: BoxFit.cover
           ),
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black87,
           leading: IconButton(
-            icon: widget.isFavorite == true ? Icon(Icons.favorite) : Icon(Icons.favorite_border_outlined),
-            onPressed: () {},
+            icon: product.isFavorite == true ? Icon(Icons.favorite) : Icon(Icons.favorite_border_outlined),
+            onPressed: () {
+              product.toggleStatusFavorit();
+            },
           ),
           title: Text(
-            widget.title.toString(),
+            '${product.title}',
             maxLines: 1,
             textAlign: TextAlign.center,
             style: TextStyle(
               overflow: TextOverflow.ellipsis,
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: FontWeight.bold
             ),
           ),

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:first_app/providers/products.dart';
+import 'package:first_app/providers/all_products.dart';
 import 'package:first_app/widgets/product_item.dart';
 
 class ProductGrid extends StatelessWidget {
@@ -9,7 +9,7 @@ class ProductGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productData = Provider.of<Products>(context);
+    final productData = Provider.of<AllProducts>(context);
     final allProducts = productData.allProducts;
 
     return GridView.builder(
@@ -19,10 +19,9 @@ class ProductGrid extends StatelessWidget {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10
       ),
-      itemBuilder: (context, index) => ProductItem(
-        id: '${allProducts[index].id}',
-        title: '${allProducts[index].title}',
-        imageURL: '${allProducts[index].imageURL}'
+      itemBuilder: (context, index) => ChangeNotifierProvider.value(
+        value: allProducts[index],
+        child: ProductItem(),
       ),
       itemCount: allProducts.length,
     );
