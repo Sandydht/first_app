@@ -1,49 +1,36 @@
+import 'package:first_app/pages/home_pages.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.blueAccent,
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
-        ),
+      debugShowCheckedModeBanner: false,
+      title: 'Theme',
+      home: HomePage(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        // visualDensity: VisualDensity.adaptivePlatformDensity,
+        // visualDensity: VisualDensity.comfortable,
+        // visualDensity: VisualDensity.compact,
+        // visualDensity: VisualDensity.standard,
+        // visualDensity: VisualDensity(
+        //   horizontal: 2, 
+        //   vertical: 1
+        // ),
+        // primaryColor: Color(0xFF448AFF),
+        // primarySwatch: MaterialColor(
+        //   0xFF448AFF,
+        //   <int, Color>{
+            
+        //   }
+        // ),
       ),
     );
   }
