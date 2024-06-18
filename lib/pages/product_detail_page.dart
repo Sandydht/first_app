@@ -1,6 +1,11 @@
-import 'package:first_app/providers/all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:first_app/pages/cart_page.dart';
+
+import 'package:first_app/providers/all_products.dart';
+import 'package:first_app/providers/cart.dart';
+import 'package:first_app/widgets/custom_badge.dart';
 
 class ProductDetailPage extends StatelessWidget {
   static const routeName = 'product-detail';
@@ -11,6 +16,7 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final product = Provider.of<AllProducts>(context).findById(productId);
+    final cart = Provider.of<Cart>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -26,6 +32,18 @@ class ProductDetailPage extends StatelessWidget {
             color: Colors.white
           ),
         ),
+        actions: [
+          CustomBadge(
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartPage.routeName);
+              },
+              icon: Icon(Icons.shopping_cart),
+              color: Colors.white,
+            ), 
+            value: cart.totalItems.toString()
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -64,6 +82,26 @@ class ProductDetailPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 24
             ), 
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          OutlinedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Add to cart'),
+                  duration: Duration(seconds: 3),
+                )
+              );
+              
+              cart.addCart(
+                product.id.toString(), 
+                product.title.toString(), 
+                product.price!.toDouble()
+              );
+            }, 
+            child: Text('Add to cart')
           )
         ],
       )
