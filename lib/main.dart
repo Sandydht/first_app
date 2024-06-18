@@ -1,48 +1,35 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Provider Review',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Column',
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blueAccent,
+          title: Text(
+            'Provider Review',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              // width: 200,
-              height: 50,
-              color: Colors.green,
-            ),
-            Container(
-              // width: 50,
-              height: 50,
-              color: Colors.blue,
-            ),
-            Container(
-              // width: 100,
-              height: 50,
-              color: Colors.amber,
-            ),
-            Container(
-              // width: 300,
-              height: 50,
-              color: Colors.red,
-            )
-          ]
+        body: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Text('Some text here')
+            ],
+          ),
         ),
       ),
     );
